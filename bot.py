@@ -18,9 +18,9 @@ ADMIN_IDS = [7354121862]                # <-- apna Telegram user id (int)
 DEFAULT_CREDITS = 10    # first time user = 10 credits
 LOOKUP_COST = 1         # har lookup pe 1 credit
 
-# Force channel join
-CHANNEL_ID = -1002163522585
-CHANNEL_LINK = "https://t.me/+XZ0vuAh5fzVhYzg1"
+# Force channel joins
+CHANNEL_ID = -1002190841011
+CHANNEL_LINK = "https://t.me/coding_courses_hub"
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
