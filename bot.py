@@ -7,7 +7,11 @@ import requests
 
 
 # ================== CONFIG ==================
-BOT_TOKEN = os.getenv("88139351756:AAEjUKx0uaRzitfIenbyVT4pxF4w9rBvjEw")  # <-- apna bot token
+# <-- apna bot token
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+if not BOT_TOKEN:
+    raise RuntimeError("BOT_TOKEN environment variable is not set")
 
 ADMIN_IDS = [7354121862]                # <-- apna Telegram user id (int)
 
@@ -19,6 +23,7 @@ CHANNEL_ID = -1002163522585
 CHANNEL_LINK = "https://t.me/+XZ0vuAh5fzVhYzg1"
 
 bot = telebot.TeleBot(BOT_TOKEN)
+
 
 # ================== DATABASE SETUP ==================
 conn = sqlite3.connect("bott.db", check_same_thread=False)
