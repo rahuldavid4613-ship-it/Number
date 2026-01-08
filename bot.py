@@ -254,7 +254,7 @@ def lookup_number(mobile_number: str) -> str:
         if not num:
             return "Number khali hai."
 
-        url = f"https://kalyug-papa.vercel.app/api/info?num={num}&key=jhat-ke-pakode"
+        url = f"https://anmolzz.teamxferry.workers.dev/?mobile={num}"
         resp = requests.get(url, timeout=15)
 
         # HTTP error => generic msg
