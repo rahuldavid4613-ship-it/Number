@@ -4,6 +4,8 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import sqlite3
 from datetime import datetime, timezone
 import requests
+from flask import Flask  # ADD THIS AT TOP
+import threading  # ADD THIS AT TOP
 
 
 # ================== CONFIG ==================
@@ -606,7 +608,27 @@ def fallback(message):
     else:
         bot.reply_to(message, "🙂 Bot use karne ke liye `/start` type karein.")
 
+# ================== FLASK HEALTH SERVER ==================
+# Add Flask web server
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "✅ Bot is running!"
+
+@app.route('/health')
+def health():
+    return "🟢 Healthy", 200
+
+def run_flask():
+    port = int(os.getenv("PORT", 10000))
+    app.run(host='0.0.0.0', port=port, debug=False, use_reloader=False)
+
 # ================== RUN ==================
 if __name__ == "__main__":
+    # Start Flask in a separate thread
+    flask_thread = threading.Thread(target=run_flask, daemon=True)
+    flask_thread.start()
+    
     print("Bot started...")
     bot.infinity_polling()
